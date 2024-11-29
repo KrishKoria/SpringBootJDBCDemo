@@ -28,6 +28,12 @@ public class StudentRepository {
     }
 
     public List<Student> findAll() {
-        return List.of();
+        return jdbcTemplate.query("select * from student", (rs, rowNum) -> {
+                Student s = new Student();
+                s.setRollNo(rs.getInt("rollno"));
+                s.setName(rs.getString("name"));
+                s.setMarks(rs.getString("marks"));
+                return s;
+        });
     }
 }
