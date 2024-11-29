@@ -7,14 +7,12 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+import static java.lang.Integer.parseInt;
+
 @Repository
 public class StudentRepository {
 
     private JdbcTemplate jdbcTemplate;
-
-    public JdbcTemplate getJdbcTemplate() {
-        return jdbcTemplate;
-    }
 
     @Autowired
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
@@ -23,7 +21,7 @@ public class StudentRepository {
 
     public void save(Student s) {
         System.out.println("Student added: " + s);
-        int rows = jdbcTemplate.update("insert into student values(?,?,?)", s.getRollNo(), s.getName(), s.getMarks());
+        int rows = jdbcTemplate.update("insert into student values (?,?,?)", s.getRollNo(), s.getName(), parseInt(s.getMarks()));
         System.out.println("Rows inserted: " + rows);
     }
 
