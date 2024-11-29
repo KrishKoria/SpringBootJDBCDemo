@@ -10,10 +10,11 @@ import java.util.List;
 @Service
 public class StudentService {
     private StudentRepository studentRepository;
+
+
     public StudentRepository getStudentRepository() {
         return studentRepository;
     }
-
     @Autowired
     public void setStudentRepository(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
